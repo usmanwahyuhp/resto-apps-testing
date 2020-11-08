@@ -2,7 +2,15 @@ import FavoriteRestoSearchPresenter from '../src/scripts/view/pages/liked-movies
 import FavoriteRestoIdb from '../src/scripts/data/favouriteresto-idb.js';
 
 describe('Searching movies', () => {
-    beforeEach(() => {
+    let presenter;
+
+    const searchMovies = (query) => {
+        const queryElement = document.getElementById('query');
+        queryElement.value = query;
+        queryElement.dispatchEvent(new Event('change'));
+    };
+ 
+    const setMovieSearchContainer = () => {
       document.body.innerHTML = `
           <div id="movie-search-container">
               <input id="query" type="text">
@@ -12,28 +20,29 @@ describe('Searching movies', () => {
               </div>
           </div>
           `;
+    };
+
+    const constructPresenter = () => {
+      spyOn(FavoriteRestoIdb, 'searchRestos');
+      presenter = new FavoriteRestoSearchPresenter({
+        favoriteRestos: FavoriteRestoIdb,
+      });
+    };
+   
+
+    beforeEach(() => {
+        setMovieSearchContainer();
+        constructPresenter();
     });
    
     it('should be able to capture the query typed by the user', () => {
-        spyOn(FavoriteRestoIdb, 'searchRestos');
-        const presenter = new FavoriteRestoSearchPresenter({
-            favoriteRestos: FavoriteRestoIdb,
-        });
-
-        const queryElement = document.getElementById('query');
-        queryElement.value = 'film a';
-        queryElement.dispatchEvent(new Event('change'));
+        searchMovies('film a');
         
         expect(presenter.latestQuery).toEqual('film a');
     });
 
     it('should ask the model to search for liked movies', () => {
-        spyOn(FavoriteRestoIdb, 'searchRestos');
-        const presenter = new FavoriteRestoSearchPresenter({ favoriteRestos: FavoriteRestoIdb });
-       
-        const queryElement = document.getElementById('query');
-        queryElement.value = 'film a';
-        queryElement.dispatchEvent(new Event('change'));
+        searchMovies('film a');
        
         expect(FavoriteRestoIdb.searchRestos)
           .toHaveBeenCalledWith('film a');
