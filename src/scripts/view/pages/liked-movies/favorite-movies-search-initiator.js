@@ -1,13 +1,13 @@
 class FavoriteRestoSearchPresenter {
-    constructor({favoriteRestos}) {
+    constructor({favoriteRestos, view}) {
+        this._view = view;
         this._listenToSearchRequestByUser();
         this._favoriteRestos = favoriteRestos;
       }
      
       _listenToSearchRequestByUser() {
-        this._queryElement = document.getElementById('query');
-        this._queryElement.addEventListener('change', (event) => {
-          this._searchRestos(event.target.value);
+        this._view.runWhenUserIsSearching((latestQuery) => {
+          this._searchRestos(latestQuery);
         });
       }
 
@@ -25,23 +25,7 @@ class FavoriteRestoSearchPresenter {
       }
 
       _showFoundRestos(restos) {
-        console.log(restos);
-        
-        let html;
-
-        if (restos.length > 0) {
-          html = restos.reduce(
-            (carry, resto) => carry.concat(`<li class="resto"><span class="resto__title">${resto.title || '-'}</span></li>`),
-            '',
-          );
-        } else {
-          html = '<div class="restos__not__found">Film tidak ditemukan</div>';
-        }
-
-        document.querySelector('.restos').innerHTML = html;
-
-        document.getElementById('resto-search-container')
-        .dispatchEvent(new Event('restos:searched:updated'));
+        this._view.showRestos(restos);
       }
    
       get latestQuery() {
