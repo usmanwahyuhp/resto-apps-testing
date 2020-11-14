@@ -48,27 +48,19 @@ describe('Searching restos', () => {
             .toHaveBeenCalledWith('film a');
         });
 
-        it('should show the found restos', () => {
-          presenter._showFoundRestos([{ id: 1, title: 'Satu' }]);
-          expect(document.querySelectorAll('.resto__title').item(0).textContent)
-            .toEqual('Satu');
-        
-          presenter._showFoundRestos(
-            [{ id: 1, title: 'Satu' }, { id: 2, title: 'Dua' }],
-          );
-        
-          const restoTitles = document.querySelectorAll('.resto__title');
-          expect(restoTitles.item(0).textContent).toEqual('Satu');
-          expect(restoTitles.item(1).textContent).toEqual('Dua');
-        
-          // kemudian tes film di atas ditampilkan
-        });
-
-        it('should show - for found resto without title', () => {
-          presenter._showFoundRestos([{ id: 1 }]);
-        
-          expect(document.querySelectorAll('.resto__title').item(0).textContent)
-            .toEqual('-');
+        it('should show - when the resto returned does not contain a title', (done) => {
+          document.getElementById('resto-search-container').addEventListener('restos:searched:updated', () => {
+            const restoTitles = document.querySelectorAll('.resto__title');
+            expect(restoTitles.item(0).textContent).toEqual('-');
+         
+            done();
+          });
+         
+          favoriteRestos.searchRestos.withArgs('film a').and.returnValues([
+            { id: 444 },
+          ]);
+         
+          searchRestos('film a');
         });
 
         it('should show the Restos found by Favorite Restos', (done) => {
