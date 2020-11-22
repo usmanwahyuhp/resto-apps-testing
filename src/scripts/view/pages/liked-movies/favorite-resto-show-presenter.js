@@ -6,8 +6,8 @@ class FavoriteRestoShowPresenter {
       this._showFavoriteRestos();
     }
 
-    _showFavoriteRestos(){
-      const restos = this._favoriteRestos.getAllMovies();
+    async _showFavoriteRestos(){
+      const restos = await this._favoriteRestos.getAllMovies();
       this._displayRestos(restos);
     }
    

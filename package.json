@@ -2,7 +2,9 @@
   "homepage": "http://usmanwahyuhp.github.io/resto-catalogue",
   "name": "restaurant-apps",
   "version": "1.0.0",
-  "description": "",
+  "description": "","browser": {
+    "fs": false
+  },
   "main": "index.js",
   "scripts": {
     "start-dev": "webpack-dev-server --config webpack.dev.js",

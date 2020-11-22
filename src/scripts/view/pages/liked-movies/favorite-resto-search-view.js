@@ -3,11 +3,11 @@ import { createRestaurantItemTemplate } from '../../templates/template-creator.j
 class FavoriteRestoSearchView {
     getTemplate() {
       return `
-          <div class="content">
+          <div class="content main">
               <input id="query" type="text">
-              <h2 class="content__heading">Your Liked Movie</h2>
-                  <div id="restos"class="restos">
-                  </div>
+              <h1 class="content__heading">Restaurant Favorite</h1>
+                  <ul id="restos" class="cards restos">
+                  </ul>
           </div>
           `;
     }
@@ -24,7 +24,7 @@ class FavoriteRestoSearchView {
 
     showFavoriteRestos(restos = []) {
       let html;
-      if (restos.length) {
+      if (restos.length > 0) {
         html = restos.reduce((carry, resto) => carry.concat(createRestaurantItemTemplate(resto)), '');
       } else {
         html = this._getEmptyRestoTemplate();

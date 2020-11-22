@@ -80,6 +80,10 @@ module.exports = {
       },
     ],
   },
+  target: 'node',
+  node: {
+    fs: "empty"
+  },
   resolve: {
     extensions: ['.js', '.jsx', '.scss'],
   },
