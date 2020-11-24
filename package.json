@@ -2,7 +2,8 @@
   "homepage": "http://usmanwahyuhp.github.io/resto-catalogue",
   "name": "restaurant-apps",
   "version": "1.0.0",
-  "description": "","browser": {
+  "description": "",
+  "browser": {
     "fs": false
   },
   "main": "index.js",
@@ -11,7 +12,8 @@
     "build": "webpack --config webpack.prod.js",
     "test": "karma start",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "e2e": "codeceptjs run --steps"
   },
   "keywords": [],
   "author": "your_name <your.email@domain.com>",
@@ -20,6 +22,7 @@
     "@babel/core": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
     "babel-loader": "^8.1.0",
+    "codeceptjs": "^3.0.2",
     "copy-webpack-plugin": "^6.0.3",
     "css-loader": "^3.6.0",
     "eslint": "^7.9.0",
@@ -38,6 +41,7 @@
     "karma-webpack": "^4.0.2",
     "mini-css-extract-plugin": "^0.11.0",
     "node-sass": "^4.14.1",
+    "puppeteer": "^5.5.0",
     "sass": "^1.26.10",
     "sass-loader": "^10.0.1",
     "style-loader": "^1.2.1",
