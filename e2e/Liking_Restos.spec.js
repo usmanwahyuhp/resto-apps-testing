@@ -1,3 +1,5 @@
+const assert = require('assert');
+
 Feature('Liking Restos');
  
 Before(({ I }) => {
@@ -9,17 +11,23 @@ Scenario('showing empty liked restos', ({ I }) => {
   I.see('Resto tidak ditemukan', '.resto-item__not__found');
 });
 
-Scenario('liking one movie', ({ I }) => {
+Scenario('liking one movie', async ({ I }) => {
   I.see('Resto tidak ditemukan', '.resto-item__not__found');
  
   I.amOnPage('/');
   
   I.seeElement('.card_content a');
-  I.click(locate('.card_content a').first());
+  const firstResto = locate('.card_content a').first();
+  const firstRestoTitle = await I.grabTextFrom('.card_title');
+  I.click(firstResto);
 
   I.seeElement('#likeButton');
   I.click('#likeButton');
  
   I.amOnPage('/#/favourite');
-  I.seeElement('.cards_item');
+  I.seeElement('.card_content');
+  // pause();
+  const likedRestoTitle = await I.grabTextFrom('.card_title');
+
+  assert.strictEqual(firstRestoTitle, likedRestoTitle);
 });
