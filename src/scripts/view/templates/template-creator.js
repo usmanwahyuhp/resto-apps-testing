@@ -40,8 +40,8 @@ const createRestaurantItemTemplate = (list) => `
     <div class="card">
         <div class="card_image"><img crossorigin="anonymous" src="${CONFIG.BASE_IMAGE_URL + list.pictureId}"></div>
         <div class="card_content">
+        <h2 class="card_title resto__title">${list.name || '-'}</h2>
         <h4 class='card_title'>Rating: ${list.rating || '-'}</h4>
-        <h2 class="card_title resto__title">${list.name || '-'} - ${list.city || '-'}</h2>
         <p class="card_text">${list.description || '-'}</p>
         <a href="${`/#/detail/${list.id}`}" class="btn card_btn">Read More</a href="">
         </div>

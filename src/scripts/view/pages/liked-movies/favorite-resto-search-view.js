@@ -24,8 +24,9 @@ class FavoriteRestoSearchView {
 
     showFavoriteRestos(restos = []) {
       let html;
-      if (restos.length > 0) {
+      if (restos.length) {
         html = restos.reduce((carry, resto) => carry.concat(createRestaurantItemTemplate(resto)), '');
+        console.log(html);
       } else {
         html = this._getEmptyRestoTemplate();
       }

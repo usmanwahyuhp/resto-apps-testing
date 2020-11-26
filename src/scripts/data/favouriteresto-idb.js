@@ -32,7 +32,7 @@ const FavoriteRestoIdb = {
     },
     async searchRestos(query) {
         return (await this.getAllMovies()).filter((movie) => {
-          const loweredCaseMovieTitle = (movie.title || '-').toLowerCase();
+          const loweredCaseMovieTitle = (movie.name || '-').toLowerCase();
           const jammedMovieTitle = loweredCaseMovieTitle.replace(/\s/g, '');
     
           const loweredCaseQuery = query.toLowerCase();
