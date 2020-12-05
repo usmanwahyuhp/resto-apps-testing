@@ -6,6 +6,7 @@ const ImageminWebpackPlugin = require('imagemin-webpack-plugin').default;
 const ImageminMozjpeg = require('imagemin-mozjpeg');
 const path = require('path');
 const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const isDevelopment = process.env.NODE_ENV === 'development';
 
@@ -125,5 +126,6 @@ module.exports = {
         }),
       ],
     }),
+    new BundleAnalyzerPlugin(),
   ],
 };
