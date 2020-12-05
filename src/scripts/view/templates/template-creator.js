@@ -4,7 +4,10 @@ import CONFIG from '../../globals/config';
 const createRestaurantDetailTemplate = (restaurant) => `
   <h1 class="resto_title">${restaurant.name || '-'} - ${restaurant.city || '-'}</h1>
   <div class="detail-info">
-    <img crossorigin="anonymous" class="restaurant_image" src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="${restaurant.name}" />
+    <img crossorigin="anonymous"
+        class="restaurant_image"
+        src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}"
+        alt="${restaurant.name}" />
     <div class="movie__info">
     <h3>Information</h3>
       <h4>Kota</h4>
@@ -38,7 +41,7 @@ const createRestaurantCommentsTemplate = (comment) => `
 const createRestaurantItemTemplate = (list) => `
     <li class="cards_item">
     <div class="card">
-        <div class="card_image"><img crossorigin="anonymous" src="${CONFIG.BASE_IMAGE_URL + list.pictureId}"></div>
+        <div class="card_image"><img crossorigin="anonymous" src="${CONFIG.BASE_IMAGE_URL + list.pictureId}" alt="${list.name}"></div>
         <div class="card_content">
         <h2 class="card_title resto__title">${list.name || '-'}</h2>
         <h4 class='card_title'>Rating: ${list.rating || '-'}</h4>

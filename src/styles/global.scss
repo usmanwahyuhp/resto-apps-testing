@@ -177,7 +177,7 @@ h2 {
   min-height: 380px;
   width: 100%;
   text-align: center;
-  background-image: url("../public/images/heros/hero-image_4.jpg");
+  background-image: url("./images/heros/hero-image_4.jpg");
   background-position: center;
   background-color: green;
 }
@@ -565,6 +565,17 @@ section{
 
   .mobile-nav {
     transform: translate(0%) !important;
+  }
+
+  .hero {
+    display: flex;
+    align-items: center;
+    min-height: 380px;
+    width: 100%;
+    text-align: center;
+    background-image: url("./images/heros/hero-image_4-large.jpg");
+    background-position: center;
+    background-color: green;
   }
 
   footer {

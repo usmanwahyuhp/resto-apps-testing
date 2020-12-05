@@ -71,7 +71,12 @@ module.exports = {
         exclude: /\.module.(s(a|c)ss)$/,
         loader: [
           isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
-          'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              url: false,
+            },
+          },
           {
             loader: 'sass-loader',
             options: {
@@ -99,6 +104,9 @@ module.exports = {
         {
           from: path.resolve(__dirname, 'src/public/'),
           to: path.resolve(__dirname, 'build/'),
+          globOptions: {
+            ignore: ['**/heros/**'],
+          }
         },
       ],
     }),
