@@ -1,4 +1,5 @@
-import { createRestaurantItemTemplate } from '../../templates/template-creator.js';
+/* eslint-disable class-methods-use-this */
+import { createRestaurantItemTemplate } from '../../templates/template-creator';
 
 class FavoriteRestoSearchView {
     getTemplate() {
@@ -11,7 +12,7 @@ class FavoriteRestoSearchView {
           </div>
           `;
     }
-  
+
     runWhenUserIsSearching(callback) {
       document.getElementById('query').addEventListener('change', (event) => {
         callback(event.target.value);
@@ -26,7 +27,6 @@ class FavoriteRestoSearchView {
       let html;
       if (restos.length) {
         html = restos.reduce((carry, resto) => carry.concat(createRestaurantItemTemplate(resto)), '');
-        console.log(html);
       } else {
         html = this._getEmptyRestoTemplate();
       }

@@ -36,16 +36,16 @@ describe('Searching restos', () => {
     describe('When query is not empty', () => {
       // ... Pemangkasan
       it('should be able to capture the query typed by the user', () => {
-        searchRestos('film a');
+        searchRestos('resto a');
         
-        expect(presenter.latestQuery).toEqual('film a');
+        expect(presenter.latestQuery).toEqual('resto a');
       });
 
       it('should ask the model to search for liked restos', () => {
-          searchRestos('film a');
+          searchRestos('resto a');
         
           expect(favoriteRestos.searchRestos)
-            .toHaveBeenCalledWith('film a');
+            .toHaveBeenCalledWith('resto a');
         });
 
         it('should show - when the resto returned does not contain a title', (done) => {
@@ -56,11 +56,11 @@ describe('Searching restos', () => {
             done();
           });
          
-          favoriteRestos.searchRestos.withArgs('film a').and.returnValues([
+          favoriteRestos.searchRestos.withArgs('resto a').and.returnValues([
             { id: 444 },
           ]);
          
-          searchRestos('film a');
+          searchRestos('resto a');
         });
 
         it('should show the Restos found by Favorite Restos', (done) => {
@@ -70,13 +70,13 @@ describe('Searching restos', () => {
             done();
           });
 
-        favoriteRestos.searchRestos.withArgs('film a').and.returnValues([
-          { id: 111, title: 'film abc' },
-          { id: 222, title: 'ada juga film abcde' },
-          { id: 333, title: 'ini juga boleh film a' },
+        favoriteRestos.searchRestos.withArgs('resto a').and.returnValues([
+          { id: 111, title: 'resto abc' },
+          { id: 222, title: 'ada juga resto abcde' },
+          { id: 333, title: 'ini juga boleh resto a' },
         ]);
 
-        searchRestos('film a');
+        searchRestos('resto a');
         });
 
         it('should show the name of the restos found by Favorite Restos', (done) => {
@@ -89,13 +89,13 @@ describe('Searching restos', () => {
             done();
           });
         
-          favoriteRestos.searchRestos.withArgs('film a').and.returnValues([
-            { id: 111, title: 'film abc' },
-            { id: 222, title: 'ada juga film abcde' },
-            { id: 333, title: 'ini juga boleh film a' },
+          favoriteRestos.searchRestos.withArgs('resto a').and.returnValues([
+            { id: 111, title: 'resto abc' },
+            { id: 222, title: 'ada juga resto abcde' },
+            { id: 333, title: 'ini juga boleh resto a' },
           ]);
         
-          searchRestos('film a');
+          searchRestos('resto a');
         });
     } );
 
@@ -114,7 +114,7 @@ describe('Searching restos', () => {
         expect(presenter.latestQuery.length).toEqual(0);
       });
 
-      it('should show all favorite movies', () => {
+      it('should show all favorite restos', () => {
         searchRestos('    ');
        
         expect(favoriteRestos.getAllMovies)
@@ -132,9 +132,9 @@ describe('Searching restos', () => {
             done();
           });
        
-        favoriteRestos.searchRestos.withArgs('film a').and.returnValues([]);
+        favoriteRestos.searchRestos.withArgs('resto a').and.returnValues([]);
        
-        searchRestos('film a');
+        searchRestos('resto a');
       });
 
       it('should not show any resto', (done) => {
@@ -143,9 +143,9 @@ describe('Searching restos', () => {
           done();
         });
        
-        favoriteRestos.searchRestos.withArgs('film a').and.returnValues([]);
+        favoriteRestos.searchRestos.withArgs('resto a').and.returnValues([]);
        
-        searchRestos('film a');
+        searchRestos('resto a');
       });
     });
    

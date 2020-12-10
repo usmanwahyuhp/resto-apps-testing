@@ -88,7 +88,6 @@ module.exports = {
       },
     ],
   },
-  target: 'node',
   optimization: {
     splitChunks: {
       chunks: 'all',
@@ -111,9 +110,6 @@ module.exports = {
         }
       }
     }
-  },
-  node: {
-    fs: "empty"
   },
   resolve: {
     extensions: ['.js', '.jsx', '.scss'],

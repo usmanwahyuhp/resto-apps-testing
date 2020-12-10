@@ -24,7 +24,7 @@ describe('Liking A Restaurant', () => {
       .toBeFalsy();
   });
 
-  it('should be able to like the movie', async () => {
+  it('should be able to like the resto', async () => {
     await TestFactories.createLikeButtonPresenterWithResto({ id: 1 });
  
     document.querySelector('#likeButton').dispatchEvent(new Event('click'));
@@ -35,7 +35,7 @@ describe('Liking A Restaurant', () => {
     FavoriteRestoIdb.deleteMovie(1);
   });
 
-  it('should not add a movie when it has no id', async () => {
+  it('should not add a resto when it has no id', async () => {
     await TestFactories.createLikeButtonPresenterWithResto({});
    
     document.querySelector('#likeButton').dispatchEvent(new Event('click'));

@@ -1,10 +1,10 @@
 class FavoriteRestoSearchPresenter {
-    constructor({favoriteRestos, view}) {
+    constructor({ favoriteRestos, view }) {
         this._view = view;
         this._listenToSearchRequestByUser();
         this._favoriteRestos = favoriteRestos;
       }
-     
+
       _listenToSearchRequestByUser() {
         this._view.runWhenUserIsSearching((latestQuery) => {
           this._searchRestos(latestQuery);
@@ -20,17 +20,15 @@ class FavoriteRestoSearchPresenter {
         } else {
           foundRestos = await this._favoriteRestos.getAllMovies();
         }
-       
         this._showFoundRestos(foundRestos);
       }
 
       _showFoundRestos(restos) {
         this._view.showFavoriteRestos(restos);
       }
-   
+
       get latestQuery() {
         return this._latestQuery;
       }
   }
-   
   export default FavoriteRestoSearchPresenter;

@@ -55,10 +55,10 @@ describe('Showing all favorite restos', () => {
         const favoriteRestos = spyOnAllFunctions(FavoriteRestoIdb);
         favoriteRestos.getAllMovies.and.returnValues([
           {
-            id: 11, title: 'A', vote_average: 3, overview: 'Sebuah film A',
+            id: 11, title: 'A', vote_average: 3, overview: 'Sebuah resto A',
           },
           {
-            id: 22, title: 'B', vote_average: 4, overview: 'Sebuah film B',
+            id: 22, title: 'B', vote_average: 4, overview: 'Sebuah resto B',
           },
         ]);
        
